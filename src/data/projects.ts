@@ -8,6 +8,9 @@ export interface Project {
   restaurantType: string;
   designGoal: string;
   image: string;
+  menuImage: string;
+  atmosphereImage: string;
+  liveUrl: string; // Add your live site URL here
   features: string[];
 }
 
@@ -22,6 +25,9 @@ export const projects: Project[] = [
     restaurantType: 'Fine Dining',
     designGoal: 'Create a sense of calm refinement that mirrors the restaurant\'s atmosphere',
     image: '/projects/maison-verre.jpg',
+    menuImage: '/projects/maison-verre-menu.jpg',
+    atmosphereImage: '/projects/maison-verre-atmosphere.jpg',
+    liveUrl: '#', // Replace with actual URL
     features: [
       'Visual identity with custom typography',
       'Intuitive reservation system',
@@ -39,6 +45,9 @@ export const projects: Project[] = [
     restaurantType: 'Grill & Barbecue',
     designGoal: 'Capture the warmth of fire and the boldness of the menu',
     image: '/projects/iron-ember.jpg',
+    menuImage: '/projects/iron-ember-menu.jpg',
+    atmosphereImage: '/projects/iron-ember-atmosphere.jpg',
+    liveUrl: '#', // Replace with actual URL
     features: [
       'Dark, atmospheric visual design',
       'Dynamic menu presentation',
@@ -56,6 +65,9 @@ export const projects: Project[] = [
     restaurantType: 'Contemporary Fine Dining',
     designGoal: 'Embody modern luxury through restraint and precision',
     image: '/projects/obsidian-ivory.jpg',
+    menuImage: '/projects/obsidian-ivory-menu.jpg',
+    atmosphereImage: '/projects/obsidian-ivory-atmosphere.jpg',
+    liveUrl: '#', // Replace with actual URL
     features: [
       'Monochromatic design system',
       'Cinematic visual storytelling',
@@ -73,6 +85,9 @@ export const projects: Project[] = [
     restaurantType: 'Café & Bakery',
     designGoal: 'Create a sense of warmth and belonging',
     image: '/projects/willow-crumb.jpg',
+    menuImage: '/projects/willow-crumb-menu.jpg',
+    atmosphereImage: '/projects/willow-crumb-atmosphere.jpg',
+    liveUrl: '#', // Replace with actual URL
     features: [
       'Warm, inviting color palette',
       'Daily specials integration',
