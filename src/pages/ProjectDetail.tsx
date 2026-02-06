@@ -1,6 +1,7 @@
 import { useParams, Link, Navigate } from 'react-router-dom';
-import { ArrowLeft, ArrowRight } from 'lucide-react';
+import { ArrowLeft, ArrowRight, ExternalLink } from 'lucide-react';
 import { Layout } from '@/components/Layout';
+import { ScrollReveal } from '@/components/ScrollReveal';
 import { projects } from '@/data/projects';
 
 const ProjectDetail = () => {
@@ -32,11 +33,21 @@ const ProjectDetail = () => {
             <p className="label-uppercase mb-3">{project.category}</p>
             <h1 className="heading-display">{project.title}</h1>
             <p className="body-large mt-4 max-w-2xl">{project.tagline}</p>
+            
+            {/* View Live CTA */}
+            <a
+              href={project.liveUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-primary mt-8 inline-flex"
+            >
+              View Live Site <ExternalLink size={16} className="ml-2" />
+            </a>
           </div>
         </div>
 
-        {/* Full-width hero image */}
-        <div className="w-full aspect-[16/9] bg-muted overflow-hidden animate-fade-up-delay-1">
+        {/* Full-width hero image - larger on mobile */}
+        <div className="w-full aspect-[4/3] md:aspect-[16/9] bg-muted overflow-hidden animate-fade-up-delay-1 rounded-lg mx-auto max-w-[95%] md:max-w-full">
           <img
             src={project.image}
             alt={project.title}
@@ -50,7 +61,7 @@ const ProjectDetail = () => {
         <div className="container-wide">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-16">
             {/* Sidebar Info */}
-            <div className="lg:col-span-1 space-y-8">
+            <ScrollReveal className="lg:col-span-1 space-y-8">
               <div>
                 <p className="label-uppercase mb-2">Style</p>
                 <p className="text-lg">{project.style}</p>
@@ -63,10 +74,10 @@ const ProjectDetail = () => {
                 <p className="label-uppercase mb-2">Design Goal</p>
                 <p className="text-lg text-muted-foreground">{project.designGoal}</p>
               </div>
-            </div>
+            </ScrollReveal>
 
             {/* Main Content */}
-            <div className="lg:col-span-2">
+            <ScrollReveal delay={100} className="lg:col-span-2">
               <h2 className="heading-medium mb-6">About the Project</h2>
               <p className="body-large mb-10">{project.description}</p>
 
@@ -79,17 +90,60 @@ const ProjectDetail = () => {
                   </li>
                 ))}
               </ul>
-            </div>
+            </ScrollReveal>
+          </div>
+        </div>
+      </section>
+
+      {/* Screenshot Gallery - Mobile optimized */}
+      <section className="pb-20 md:pb-28">
+        <div className="container-wide">
+          <ScrollReveal>
+            <p className="label-uppercase mb-6">Screenshots</p>
+          </ScrollReveal>
+          
+          <div className="space-y-6 md:space-y-8">
+            {/* Menu Screenshot */}
+            <ScrollReveal>
+              <div className="w-full aspect-[4/3] md:aspect-[16/9] bg-muted overflow-hidden rounded-lg">
+                <img
+                  src={project.menuImage}
+                  alt={`${project.title} - Menu`}
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <p className="text-sm text-muted-foreground mt-3 text-center">Menu Design</p>
+            </ScrollReveal>
+
+            {/* Atmosphere Screenshot */}
+            <ScrollReveal delay={100}>
+              <div className="w-full aspect-[4/3] md:aspect-[16/9] bg-muted overflow-hidden rounded-lg">
+                <img
+                  src={project.atmosphereImage}
+                  alt={`${project.title} - Atmosphere`}
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <p className="text-sm text-muted-foreground mt-3 text-center">Atmosphere & Interior</p>
+            </ScrollReveal>
           </div>
         </div>
       </section>
 
       {/* Closing */}
       <section className="py-12 md:py-16 border-t border-border">
-        <div className="container-wide">
-          <p className="heading-small italic text-center text-muted-foreground">
+        <div className="container-wide text-center">
+          <p className="heading-small italic text-muted-foreground mb-6">
             Built to feel like the restaurant, not a website.
           </p>
+          <a
+            href={project.liveUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-outline"
+          >
+            View Live Site <ExternalLink size={16} className="ml-2" />
+          </a>
         </div>
       </section>
 
