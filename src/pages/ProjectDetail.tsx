@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, TouchEvent } from 'react';
 import { useParams, Link, Navigate } from 'react-router-dom';
 import { ArrowLeft, ArrowRight, ExternalLink, ChevronLeft, ChevronRight } from 'lucide-react';
 import { Layout } from '@/components/Layout';
@@ -55,30 +55,49 @@ const ProjectDetail = () => {
         {/* Screenshot Carousel */}
         <div className="container-wide animate-fade-up-delay-1">
           <div className="relative">
-            {/* Main Image with Crossfade */}
-            <div className="w-full aspect-[4/3] md:aspect-[16/9] bg-muted overflow-hidden rounded-lg relative">
+            {/* Main Image with Crossfade + Swipe Support */}
+            <div 
+              className="w-full aspect-[4/3] md:aspect-[16/9] bg-muted overflow-hidden rounded-lg relative touch-pan-y"
+              onTouchStart={(e: TouchEvent<HTMLDivElement>) => {
+                const touch = e.touches[0];
+                e.currentTarget.dataset.touchStartX = touch.clientX.toString();
+              }}
+              onTouchEnd={(e: TouchEvent<HTMLDivElement>) => {
+                const touchStartX = parseFloat(e.currentTarget.dataset.touchStartX || '0');
+                const touchEndX = e.changedTouches[0].clientX;
+                const diff = touchStartX - touchEndX;
+                
+                if (Math.abs(diff) > 50) {
+                  if (diff > 0) {
+                    nextSlide();
+                  } else {
+                    prevSlide();
+                  }
+                }
+              }}
+            >
               {slides.map((slide, index) => (
                 <img
                   key={index}
                   src={slide.image}
                   alt={`${project.title} - ${slide.label}`}
                   className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ease-in-out ${
-                    index === currentSlide ? 'opacity-100 z-10' : 'opacity-0 z-0'
+                    index === currentSlide ? 'opacity-100' : 'opacity-0'
                   }`}
                 />
               ))}
               
-              {/* Navigation Arrows */}
+              {/* Navigation Arrows - Desktop only */}
               <button
                 onClick={prevSlide}
-                className="absolute left-3 md:left-4 top-1/2 -translate-y-1/2 w-10 h-10 md:w-12 md:h-12 bg-background/80 backdrop-blur-sm rounded-full flex items-center justify-center text-foreground hover:bg-background transition-colors shadow-lg"
+                className="hidden md:flex absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-background/80 backdrop-blur-sm rounded-full items-center justify-center text-foreground hover:bg-background transition-colors shadow-lg z-20"
                 aria-label="Previous slide"
               >
                 <ChevronLeft size={20} />
               </button>
               <button
                 onClick={nextSlide}
-                className="absolute right-3 md:right-4 top-1/2 -translate-y-1/2 w-10 h-10 md:w-12 md:h-12 bg-background/80 backdrop-blur-sm rounded-full flex items-center justify-center text-foreground hover:bg-background transition-colors shadow-lg"
+                className="hidden md:flex absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-background/80 backdrop-blur-sm rounded-full items-center justify-center text-foreground hover:bg-background transition-colors shadow-lg z-20"
                 aria-label="Next slide"
               >
                 <ChevronRight size={20} />
