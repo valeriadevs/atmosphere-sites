@@ -7,7 +7,7 @@ export const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8">
           {/* Brand */}
           <div className="md:col-span-1">
-            <h3 className="font-serif text-xl mb-4">Valeria Studio</h3>
+            <h3 className="font-serif text-xl mb-4">Valeria's Space</h3>
             <p className="text-muted-foreground text-sm leading-relaxed max-w-xs">
               Designing places people remember.
             </p>
@@ -65,7 +65,7 @@ export const Footer = () => {
         {/* Bottom */}
         <div className="mt-16 pt-8 border-t border-border flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
           <p className="text-sm text-muted-foreground">
-            © {new Date().getFullYear()} Valeria Studio
+            © {new Date().getFullYear()} Valeria's Space
           </p>
           <p className="text-sm text-muted-foreground italic font-serif">
             Designed with restraint. Built with intention.
