@@ -76,7 +76,7 @@ export const Navigation = () => {
         }`}
       >
         <div className="container-wide py-6 flex flex-col gap-4">
-          {navItems.map((item) => (
+          {navItems.map((item, index) => (
             <Link
               key={item.path}
               to={item.path}
@@ -84,7 +84,10 @@ export const Navigation = () => {
                 location.pathname === item.path
                   ? 'text-foreground'
                   : 'text-muted-foreground hover:text-foreground'
-              }`}
+              } ${isOpen ? 'translate-y-0 opacity-100' : 'translate-y-2 opacity-0'}`}
+              style={{
+                transitionDelay: isOpen ? `${index * 50}ms` : '0ms',
+              }}
             >
               {item.name}
             </Link>
