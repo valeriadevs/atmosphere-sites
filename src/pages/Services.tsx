@@ -54,7 +54,7 @@ const Services = () => {
             {services.map((service, index) => (
               <div
                 key={service.title}
-                className="p-8 md:p-10 border border-border bg-muted/30 animate-fade-up"
+                className="p-8 md:p-10 border border-border bg-muted/30 rounded-lg animate-fade-up transition-all duration-300 hover:bg-muted/60 hover:border-secondary/50 hover:-translate-y-1 hover:shadow-lg cursor-default"
                 style={{ animationDelay: `${index * 0.1}s`, opacity: 0 }}
               >
                 <h3 className="heading-small mb-3">{service.title}</h3>
