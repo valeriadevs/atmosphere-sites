@@ -1,5 +1,6 @@
+import { useState } from 'react';
 import { useParams, Link, Navigate } from 'react-router-dom';
-import { ArrowLeft, ArrowRight, ExternalLink } from 'lucide-react';
+import { ArrowLeft, ArrowRight, ExternalLink, ChevronLeft, ChevronRight } from 'lucide-react';
 import { Layout } from '@/components/Layout';
 import { ScrollReveal } from '@/components/ScrollReveal';
 import { projects } from '@/data/projects';
@@ -7,10 +8,25 @@ import { projects } from '@/data/projects';
 const ProjectDetail = () => {
   const { slug } = useParams();
   const project = projects.find((p) => p.slug === slug);
+  const [currentSlide, setCurrentSlide] = useState(0);
   
   if (!project) {
     return <Navigate to="/work" replace />;
   }
+
+  const slides = [
+    { image: project.image, label: 'Homepage' },
+    { image: project.menuImage, label: 'Menu' },
+    { image: project.atmosphereImage, label: 'Atmosphere' },
+  ];
+
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev + 1) % slides.length);
+  };
+
+  const prevSlide = () => {
+    setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
+  };
 
   const currentIndex = projects.findIndex((p) => p.slug === slug);
   const nextProject = projects[(currentIndex + 1) % projects.length];
@@ -33,26 +49,66 @@ const ProjectDetail = () => {
             <p className="label-uppercase mb-3">{project.category}</p>
             <h1 className="heading-display">{project.title}</h1>
             <p className="body-large mt-4 max-w-2xl">{project.tagline}</p>
-            
-            {/* View Live CTA */}
+          </div>
+        </div>
+
+        {/* Screenshot Carousel */}
+        <div className="container-wide animate-fade-up-delay-1">
+          <div className="relative">
+            {/* Main Image */}
+            <div className="w-full aspect-[4/3] md:aspect-[16/9] bg-muted overflow-hidden rounded-lg relative">
+              <img
+                src={slides[currentSlide].image}
+                alt={`${project.title} - ${slides[currentSlide].label}`}
+                className="w-full h-full object-cover transition-opacity duration-500"
+              />
+              
+              {/* Navigation Arrows */}
+              <button
+                onClick={prevSlide}
+                className="absolute left-3 md:left-4 top-1/2 -translate-y-1/2 w-10 h-10 md:w-12 md:h-12 bg-background/80 backdrop-blur-sm rounded-full flex items-center justify-center text-foreground hover:bg-background transition-colors shadow-lg"
+                aria-label="Previous slide"
+              >
+                <ChevronLeft size={20} />
+              </button>
+              <button
+                onClick={nextSlide}
+                className="absolute right-3 md:right-4 top-1/2 -translate-y-1/2 w-10 h-10 md:w-12 md:h-12 bg-background/80 backdrop-blur-sm rounded-full flex items-center justify-center text-foreground hover:bg-background transition-colors shadow-lg"
+                aria-label="Next slide"
+              >
+                <ChevronRight size={20} />
+              </button>
+            </div>
+
+            {/* Slide Indicator & Label */}
+            <div className="flex flex-col items-center mt-4 gap-3">
+              <p className="text-sm text-muted-foreground">{slides[currentSlide].label}</p>
+              <div className="flex gap-2">
+                {slides.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setCurrentSlide(index)}
+                    className={`w-2 h-2 rounded-full transition-colors ${
+                      index === currentSlide ? 'bg-foreground' : 'bg-border hover:bg-muted-foreground'
+                    }`}
+                    aria-label={`Go to slide ${index + 1}`}
+                  />
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* View Live CTA - After carousel */}
+          <div className="mt-8 flex justify-center">
             <a
               href={project.liveUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-primary mt-8 inline-flex"
+              className="inline-flex items-center gap-2 px-5 py-2.5 text-sm font-medium border border-primary text-primary rounded-md hover:bg-primary hover:text-primary-foreground transition-colors"
             >
-              View Live Site <ExternalLink size={16} className="ml-2" />
+              View Live Site <ExternalLink size={14} />
             </a>
           </div>
-        </div>
-
-        {/* Full-width hero image - larger on mobile */}
-        <div className="w-full aspect-[4/3] md:aspect-[16/9] bg-muted overflow-hidden animate-fade-up-delay-1 rounded-lg mx-auto max-w-[95%] md:max-w-full">
-          <img
-            src={project.image}
-            alt={project.title}
-            className="w-full h-full object-cover"
-          />
         </div>
       </section>
 
@@ -95,55 +151,12 @@ const ProjectDetail = () => {
         </div>
       </section>
 
-      {/* Screenshot Gallery - Mobile optimized */}
-      <section className="pb-20 md:pb-28">
-        <div className="container-wide">
-          <ScrollReveal>
-            <p className="label-uppercase mb-6">Screenshots</p>
-          </ScrollReveal>
-          
-          <div className="space-y-6 md:space-y-8">
-            {/* Menu Screenshot */}
-            <ScrollReveal>
-              <div className="w-full aspect-[4/3] md:aspect-[16/9] bg-muted overflow-hidden rounded-lg">
-                <img
-                  src={project.menuImage}
-                  alt={`${project.title} - Menu`}
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <p className="text-sm text-muted-foreground mt-3 text-center">Menu Design</p>
-            </ScrollReveal>
-
-            {/* Atmosphere Screenshot */}
-            <ScrollReveal delay={100}>
-              <div className="w-full aspect-[4/3] md:aspect-[16/9] bg-muted overflow-hidden rounded-lg">
-                <img
-                  src={project.atmosphereImage}
-                  alt={`${project.title} - Atmosphere`}
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <p className="text-sm text-muted-foreground mt-3 text-center">Atmosphere & Interior</p>
-            </ScrollReveal>
-          </div>
-        </div>
-      </section>
-
       {/* Closing */}
       <section className="py-12 md:py-16 border-t border-border">
         <div className="container-wide text-center">
-          <p className="heading-small italic text-muted-foreground mb-6">
+          <p className="heading-small italic text-muted-foreground">
             Built to feel like the restaurant, not a website.
           </p>
-          <a
-            href={project.liveUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn-outline"
-          >
-            View Live Site <ExternalLink size={16} className="ml-2" />
-          </a>
         </div>
       </section>
 
