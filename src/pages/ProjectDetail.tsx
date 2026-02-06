@@ -55,13 +55,18 @@ const ProjectDetail = () => {
         {/* Screenshot Carousel */}
         <div className="container-wide animate-fade-up-delay-1">
           <div className="relative">
-            {/* Main Image */}
+            {/* Main Image with Crossfade */}
             <div className="w-full aspect-[4/3] md:aspect-[16/9] bg-muted overflow-hidden rounded-lg relative">
-              <img
-                src={slides[currentSlide].image}
-                alt={`${project.title} - ${slides[currentSlide].label}`}
-                className="w-full h-full object-cover transition-opacity duration-500"
-              />
+              {slides.map((slide, index) => (
+                <img
+                  key={index}
+                  src={slide.image}
+                  alt={`${project.title} - ${slide.label}`}
+                  className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ease-in-out ${
+                    index === currentSlide ? 'opacity-100 z-10' : 'opacity-0 z-0'
+                  }`}
+                />
+              ))}
               
               {/* Navigation Arrows */}
               <button
