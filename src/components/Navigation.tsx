@@ -38,7 +38,7 @@ export const Navigation = () => {
         <div className="flex items-center justify-between h-20 md:h-24">
           {/* Logo */}
           <Link to="/" className="font-serif text-xl md:text-2xl tracking-tight">
-            Valeria's space
+            Valeria's Space
           </Link>
 
           {/* Desktop Navigation */}
