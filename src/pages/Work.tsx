@@ -1,5 +1,6 @@
 import { Layout } from '@/components/Layout';
 import { ProjectCard } from '@/components/ProjectCard';
+import { ScrollReveal } from '@/components/ScrollReveal';
 import { projects } from '@/data/projects';
 
 const Work = () => {
@@ -25,14 +26,14 @@ const Work = () => {
         <div className="container-wide">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
             {projects.map((project, index) => (
-              <ProjectCard
-                key={project.slug}
-                slug={project.slug}
-                title={project.title}
-                category={project.category}
-                image={project.image}
-                index={index}
-              />
+              <ScrollReveal key={project.slug} delay={index * 100}>
+                <ProjectCard
+                  slug={project.slug}
+                  title={project.title}
+                  category={project.category}
+                  image={project.image}
+                />
+              </ScrollReveal>
             ))}
           </div>
         </div>

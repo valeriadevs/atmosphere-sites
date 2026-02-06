@@ -5,15 +5,13 @@ interface ProjectCardProps {
   title: string;
   category: string;
   image: string;
-  index?: number;
 }
 
-export const ProjectCard = ({ slug, title, category, image, index = 0 }: ProjectCardProps) => {
+export const ProjectCard = ({ slug, title, category, image }: ProjectCardProps) => {
   return (
     <Link
       to={`/work/${slug}`}
-      className="group block animate-fade-up"
-      style={{ animationDelay: `${index * 0.1}s`, opacity: 0 }}
+      className="group block"
     >
       <div className="relative overflow-hidden bg-muted aspect-[4/3] mb-5 rounded-lg">
         <img
