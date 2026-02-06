@@ -71,8 +71,8 @@ export const Navigation = () => {
 
       {/* Mobile Navigation */}
       <div
-        className={`md:hidden absolute top-full left-0 right-0 bg-background border-b border-border transition-all duration-300 overflow-hidden ${
-          isOpen ? 'max-h-[400px] opacity-100' : 'max-h-0 opacity-0'
+        className={`md:hidden absolute top-full left-0 right-0 bg-background border-b border-border transition-all duration-300 overflow-hidden z-50 ${
+          isOpen ? 'max-h-[400px] opacity-100' : 'max-h-0 opacity-0 pointer-events-none'
         }`}
       >
         <div className="container-wide py-6 flex flex-col gap-4">
@@ -80,10 +80,10 @@ export const Navigation = () => {
             <Link
               key={item.path}
               to={item.path}
-              className={`text-lg font-serif transition-all duration-300 ${
+              className={`text-lg font-serif transition-all duration-300 relative z-10 ${
                 location.pathname === item.path
                   ? 'text-foreground'
-                  : 'text-muted-foreground'
+                  : 'text-muted-foreground hover:text-foreground'
               }`}
               style={{
                 animation: isOpen ? `slideDown 0.3s ease-out ${index * 0.05}s forwards` : 'none',
