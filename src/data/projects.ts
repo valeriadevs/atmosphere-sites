@@ -27,7 +27,7 @@ export const projects: Project[] = [
     image: '/projects/maison-verre.jpg',
     menuImage: '/projects/maison-verre-menu.jpg',
     atmosphereImage: '/projects/maison-verre-atmosphere.jpg',
-    liveUrl: '#', // Replace with actual URL
+    liveUrl: '#https://www.maison-verre.shop/', 
     features: [
       'Visual identity with custom typography',
       'Intuitive reservation system',
@@ -47,7 +47,7 @@ export const projects: Project[] = [
     image: '/projects/iron-ember.jpg',
     menuImage: '/projects/iron-ember-menu.jpg',
     atmosphereImage: '/projects/iron-ember-atmosphere.jpg',
-    liveUrl: '#', // Replace with actual URL
+    liveUrl: '#https://www.ironemberflame.shop/',
     features: [
       'Dark, atmospheric visual design',
       'Dynamic menu presentation',
@@ -67,7 +67,7 @@ export const projects: Project[] = [
     image: '/projects/obsidian-ivory.jpg',
     menuImage: '/projects/obsidian-ivory-menu.jpg',
     atmosphereImage: '/projects/obsidian-ivory-atmosphere.jpg',
-    liveUrl: '#', // Replace with actual URL
+    liveUrl: '#https://www.obsidian-ivory.online/',
     features: [
       'Monochromatic design system',
       'Cinematic visual storytelling',
@@ -87,7 +87,7 @@ export const projects: Project[] = [
     image: '/projects/willow-crumb.jpg',
     menuImage: '/projects/willow-crumb-menu.jpg',
     atmosphereImage: '/projects/willow-crumb-atmosphere.jpg',
-    liveUrl: '#', // Replace with actual URL
+    liveUrl: '#https://www.willowcrumb.online/',
     features: [
       'Warm, inviting color palette',
       'Daily specials integration',
