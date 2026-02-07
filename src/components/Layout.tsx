@@ -2,6 +2,7 @@ import { ReactNode, useEffect, useState } from 'react';
 import { Navigation } from './Navigation';
 import { Footer } from './Footer';
 import { ScrollToTop } from './ScrollToTop';
+import { useIsMobile } from '@/hooks/use-mobile';
 import marbleBackground from '@/assets/marble-background.jpg';
 
 interface LayoutProps {
@@ -10,27 +11,32 @@ interface LayoutProps {
 
 export const Layout = ({ children }: LayoutProps) => {
   const [scrollY, setScrollY] = useState(0);
+  const isMobile = useIsMobile();
 
   useEffect(() => {
+    // Disable parallax on mobile to prevent glitches from dynamic address bar
+    if (isMobile) return;
+    
     const handleScroll = () => {
       setScrollY(window.scrollY);
     };
     
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [isMobile]);
 
   return (
     <div className="min-h-screen flex flex-col relative overflow-hidden">
       {/* Parallax marble background */}
       <div 
-        className="fixed inset-0 z-0 will-change-transform"
+        className="fixed inset-0 z-0"
         style={{
           backgroundImage: `url(${marbleBackground})`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
-          transform: `translateY(${scrollY * 0.3}px) scale(1.1)`,
-          transition: 'transform 0.1s ease-out',
+          backgroundAttachment: isMobile ? 'scroll' : 'fixed',
+          transform: isMobile ? 'none' : `translateY(${scrollY * 0.3}px) scale(1.1)`,
+          transition: isMobile ? 'none' : 'transform 0.1s ease-out',
         }}
       />
       
