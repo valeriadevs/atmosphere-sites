@@ -41,7 +41,7 @@ export const Layout = ({ children }: LayoutProps) => {
       />
       
       {/* Subtle overlay for readability */}
-      <div className="fixed inset-0 bg-background/70 pointer-events-none z-[1]" />
+      <div className="fixed inset-0 bg-background/60 pointer-events-none z-[1]" />
       
       <div className="relative z-10 flex flex-col min-h-screen">
         <ScrollToTop />
