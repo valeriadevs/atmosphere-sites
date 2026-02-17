@@ -16,7 +16,7 @@ export const ProjectCard = ({ slug, title, category, image, placeholderGradient 
       to={`/work/${slug}`}
       className="group block"
     >
-      <div className="relative overflow-hidden bg-muted aspect-[4/3] mb-5 rounded-lg">
+      <div className="relative overflow-hidden bg-muted aspect-[16/10] mb-5 rounded-lg">
         {hasImage ? (
           <img
             src={image}
