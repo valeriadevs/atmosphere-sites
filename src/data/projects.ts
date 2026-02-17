@@ -31,9 +31,6 @@ export const projects: Project[] = [
     menuImage: '/projects/menu-echelon.jpg',
     atmosphereImage: '/projects/atm-echelon.jpg',
     liveUrl: 'https://www.echelon-dining.shop/',
-    // placeholderGradient: 'linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 40%, #16213e 70%, #0f3460 100%)',
-    // menuGradient: 'linear-gradient(135deg, #0d0d0d 0%, #1a1a1a 50%, #2d1b3d 100%)',
-    // atmosphereGradient: 'linear-gradient(135deg, #0a0a0a 0%, #1c1c2e 60%, #0f3460 100%)',
     features: [
       'Dark, immersive visual identity',
       'Exclusive reservation-only booking system',
@@ -94,9 +91,6 @@ export const projects: Project[] = [
     menuImage: '/projects/menu-saffron.jpg',
     atmosphereImage: '/projects/atm-saffron.jpg',
     liveUrl: 'https://www.saffronstreet.online/',
-    // placeholderGradient: 'linear-gradient(135deg, #f2994a 0%, #f2c94c 40%, #eb5757 70%, #f2994a 100%)',
-    // menuGradient: 'linear-gradient(135deg, #e8a838 0%, #f2c94c 50%, #f09819 100%)',
-    // atmosphereGradient: 'linear-gradient(135deg, #f2994a 0%, #eb5757 50%, #f2c94c 100%)',
     features: [
       'Warm, colorful visual identity',
       'Family-friendly menu presentation',
@@ -157,9 +151,6 @@ export const projects: Project[] = [
     menuImage: '/projects/menu-noire.jpg',
     atmosphereImage: '/projects/atm-noire.jpg',
     liveUrl: 'https://www.noirecellar.shop/',
-    // placeholderGradient: 'linear-gradient(135deg, #1a0a0a 0%, #3d0c02 40%, #722f37 70%, #2c1a1a 100%)',
-    // menuGradient: 'linear-gradient(135deg, #1a0a0a 0%, #4a1a2e 50%, #3d0c02 100%)',
-    // atmosphereGradient: 'linear-gradient(135deg, #2c1a1a 0%, #722f37 50%, #1a0a0a 100%)',
     features: [
       'Rich, wine-inspired color palette',
       'Virtual vineyard tour experience',
