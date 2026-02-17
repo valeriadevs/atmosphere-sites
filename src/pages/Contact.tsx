@@ -26,7 +26,7 @@ const Contact = () => {
             <div className="space-y-0">
               {/* Facebook - Primary */}
               <a
-                href="https://facebook.com/valeriastudio" // ← CHANGE: Your Facebook URL
+                href="https://www.facebook.com/profile.php?id=61587311446249" // ← CHANGE: Your Facebook URL
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-6 py-8 border-b border-border group animate-fade-up"
@@ -38,14 +38,14 @@ const Contact = () => {
                 <div>
                   <p className="label-uppercase mb-1">Facebook</p>
                   <p className="text-lg group-hover:text-secondary transition-colors">
-                    Valeria Studio {/* ← CHANGE: Your Facebook page name */}
+                    Valeria's Space {/* ← CHANGE: Your Facebook page name */}
                   </p>
                 </div>
               </a>
 
               {/* Email */}
               <a
-                href="mailto:hello@valeriastudio.com" // ← CHANGE: Your email
+                href="mailto:valeriamridney@gmail.com" // ← CHANGE: Your email
                 className="flex items-center gap-6 py-8 border-b border-border group animate-fade-up"
                 style={{ animationDelay: '0.2s', opacity: 0 }}
               >
@@ -55,14 +55,14 @@ const Contact = () => {
                 <div>
                   <p className="label-uppercase mb-1">Email</p>
                   <p className="text-lg group-hover:text-secondary transition-colors">
-                    hello@valeriastudio.com {/* ← CHANGE: Your email */}
+                    valeriamridney@gmail.com {/* ← CHANGE: Your email */}
                   </p>
                 </div>
               </a>
 
               {/* Instagram */}
               <a
-                href="https://instagram.com/valeriastudio" // ← CHANGE: Your Instagram URL
+                href="https://www.instagram.com/valerias.spacee/" // ← CHANGE: Your Instagram URL
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-6 py-8 border-b border-border group animate-fade-up"
@@ -74,7 +74,7 @@ const Contact = () => {
                 <div>
                   <p className="label-uppercase mb-1">Instagram</p>
                   <p className="text-lg group-hover:text-secondary transition-colors">
-                    @valeriastudio {/* ← CHANGE: Your Instagram handle */}
+                    @valerias.spacee {/* ← CHANGE: Your Instagram handle */}
                   </p>
                 </div>
               </a>
