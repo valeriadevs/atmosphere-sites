@@ -37,7 +37,7 @@ export const Footer = () => {
             <p className="label-uppercase mb-4">Connect</p>
             <div className="flex flex-col gap-3">
               <a
-                href="https://facebook.com/valeriastudio" // ← CHANGE: Your Facebook URL
+                href="https://www.facebook.com/profile.php?id=61587311446249" // ← CHANGE: Your Facebook URL
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-muted-foreground hover:text-foreground transition-colors text-sm"
@@ -45,13 +45,13 @@ export const Footer = () => {
                 Facebook
               </a>
               <a
-                href="mailto:hello@valeriastudio.com" // ← CHANGE: Your email
+                href="mailto:valeriamridney@gmail.com" // ← CHANGE: Your email
                 className="text-muted-foreground hover:text-foreground transition-colors text-sm"
               >
-                hello@valeriastudio.com {/* ← CHANGE: Your email */}
+                valeriamridney@gmail.com {/* ← CHANGE: Your email */}
               </a>
               <a
-                href="https://instagram.com/valeriastudio" // ← CHANGE: Your Instagram URL
+                href="https://www.instagram.com/valerias.spacee/" // ← CHANGE: Your Instagram URL
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-muted-foreground hover:text-foreground transition-colors text-sm"
