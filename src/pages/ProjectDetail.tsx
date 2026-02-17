@@ -15,9 +15,9 @@ const ProjectDetail = () => {
   }
 
   const slides = [
-    { image: project.image, label: 'Homepage' },
-    { image: project.menuImage, label: 'Menu' },
-    { image: project.atmosphereImage, label: 'Atmosphere' },
+    { image: project.image, label: 'Homepage', gradient: project.placeholderGradient },
+    { image: project.menuImage, label: 'Menu', gradient: project.menuGradient },
+    { image: project.atmosphereImage, label: 'Atmosphere', gradient: project.atmosphereGradient },
   ];
 
   const nextSlide = () => {
@@ -77,14 +77,24 @@ const ProjectDetail = () => {
               }}
             >
               {slides.map((slide, index) => (
-                <img
-                  key={index}
-                  src={slide.image}
-                  alt={`${project.title} - ${slide.label}`}
-                  className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ease-in-out ${
-                    index === currentSlide ? 'opacity-100' : 'opacity-0'
-                  }`}
-                />
+                slide.image && slide.image.length > 0 ? (
+                  <img
+                    key={index}
+                    src={slide.image}
+                    alt={`${project.title} - ${slide.label}`}
+                    className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ease-in-out ${
+                      index === currentSlide ? 'opacity-100' : 'opacity-0'
+                    }`}
+                  />
+                ) : (
+                  <div
+                    key={index}
+                    className={`absolute inset-0 w-full h-full transition-opacity duration-700 ease-in-out ${
+                      index === currentSlide ? 'opacity-100' : 'opacity-0'
+                    }`}
+                    style={{ background: slide.gradient || 'linear-gradient(135deg, #333 0%, #555 100%)' }}
+                  />
+                )
               ))}
               
               {/* Navigation Arrows - Desktop only */}
@@ -122,17 +132,19 @@ const ProjectDetail = () => {
             </div>
           </div>
 
-          {/* View Live CTA - After carousel */}
-          <div className="mt-8 flex justify-center">
-            <a
-              href={project.liveUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-5 py-2.5 text-sm font-medium border border-primary text-primary rounded-md hover:bg-primary hover:text-primary-foreground transition-colors"
-            >
-              View Live Site <ExternalLink size={14} />
-            </a>
-          </div>
+          {/* View Live CTA - Only show if liveUrl exists */}
+          {project.liveUrl && (
+            <div className="mt-8 flex justify-center">
+              <a
+                href={project.liveUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-5 py-2.5 text-sm font-medium border border-primary text-primary rounded-md hover:bg-primary hover:text-primary-foreground transition-colors"
+              >
+                View Live Site <ExternalLink size={14} />
+              </a>
+            </div>
+          )}
         </div>
       </section>
 
