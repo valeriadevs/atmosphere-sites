@@ -3,7 +3,7 @@ import { ArrowRight } from 'lucide-react';
 import { Layout } from '@/components/Layout';
 import { ProjectCard } from '@/components/ProjectCard';
 import { ScrollReveal } from '@/components/ScrollReveal';
-import { projects } from '@/data/projects';
+import { featuredProjects } from '@/data/projects';
 
 const Index = () => {
   return (
@@ -49,13 +49,14 @@ const Index = () => {
           </ScrollReveal>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
-            {projects.map((project, index) => (
+            {featuredProjects.map((project, index) => (
               <ScrollReveal key={project.slug} delay={index * 100}>
                 <ProjectCard
                   slug={project.slug}
                   title={project.title}
                   category={project.category}
                   image={project.image}
+                  placeholderGradient={project.placeholderGradient}
                 />
               </ScrollReveal>
             ))}
